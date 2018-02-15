@@ -27,23 +27,23 @@ class nova::vncproxy::common (
 
   $vncproxy_host_real     = normalize_ip_for_uri(pick(
     $vncproxy_host,
-    $::nova::compute::vncproxy_host,
-    $::nova::vncproxy::host,
+    getvar('::nova::compute::vncproxy_host'),
+    getvar('::nova::vncproxy::host'),
     false))
   $vncproxy_protocol_real = pick(
     $vncproxy_protocol,
-    $::nova::compute::vncproxy_protocol,
-    $::nova::vncproxy::vncproxy_protocol,
+    getvar('::nova::compute::vncproxy_protocol'),
+    getvar('::nova::vncproxy::vncproxy_protocol'),
     'http')
   $vncproxy_port_real     = pick(
     $vncproxy_port,
-    $::nova::compute::vncproxy_port,
-    $::nova::vncproxy::port,
+    getvar('::nova::compute::vncproxy_port'),
+    getvar('::nova::vncproxy::port'),
     6080)
   $vncproxy_path_real     = pick(
     $vncproxy_path,
-    $::nova::compute::vncproxy_path,
-    $::nova::vncproxy::vncproxy_path,
+    getvar('::nova::compute::vncproxy_path'),
+    getvar('::nova::vncproxy::vncproxy_path'),
     '/vnc_auto.html')
 
   if ($vncproxy_host_real) {
