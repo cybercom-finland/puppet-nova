@@ -16,7 +16,7 @@ class nova::pci(
 ) {
   include ::nova::deps
 
-  $picked_aliases = pick_default($::nova::api::pci_alias, $aliases)
+  $picked_aliases = pick_default(getvar('::nova::api::pci_alias'), $aliases)
 
   if $picked_aliases and
       !is_service_default($picked_aliases) and
