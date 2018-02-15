@@ -148,7 +148,7 @@ class nova::network::neutron (
   include ::nova::deps
 
 
-  $default_floating_pool_real = pick($::nova::api::default_floating_pool, $default_floating_pool)
+  $default_floating_pool_real = pick(getvar('::nova::api::default_floating_pool'), $default_floating_pool)
 
   nova_config {
     'DEFAULT/dhcp_domain':             value => $dhcp_domain;
